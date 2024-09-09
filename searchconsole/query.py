@@ -297,6 +297,7 @@ class Query:
     def execute(self):
 
         raw = self.build()
+        print(raw)
         url = self.api.url
 
         try:
