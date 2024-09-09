@@ -122,6 +122,12 @@ class Query:
         return self
 
     @utils.immutable
+    def aggregationType(self, aggregationType):
+        self.raw['aggregationType'] = aggregationType
+
+        return self
+
+    @utils.immutable
     def filter(self, dimension, expression, operator='equals',
                group_type='and'):
         """
