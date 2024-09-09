@@ -297,14 +297,16 @@ class Query:
     def execute(self):
 
         raw = self.build()
-        print(raw)
+        print("raw query:", raw)
         url = self.api.url
 
         try:
             self._wait()
             response = self.api.account.service.searchanalytics().query(
                 siteUrl=url, body=raw).execute()
+            print("API Response:", response)
         except googleapiclient.errors.HttpError as e:
+            print(f"API Error: {e}")
             raise e
 
         return Report(response, self)
